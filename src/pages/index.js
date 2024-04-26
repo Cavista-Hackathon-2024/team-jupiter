@@ -1,2 +1,2 @@
-export { default as HomePage } from "./Home/Homepage";
-export { default as Recommendation } from "./Recommendation/Recommendation";
+export { default as HomePage } from './Home/HomePage';
+export { default as ReportPage } from './Report/ReportPage.jsx';

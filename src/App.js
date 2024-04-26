@@ -1,16 +1,15 @@
-import { Routes, Route } from "react-router-dom";
-import { HomePage } from "./pages";
-import ReportPage from "./pages/Report/ReportPage";
+import { Routes, Route } from 'react-router-dom';
+import { HomePage, ReportPage } from './pages';
 
 function App() {
-  return (
-    <>
-      <Routes>
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/report" element={<ReportPage />} />
-      </Routes>
-    </>
-  );
+	return (
+		<>
+			<Routes>
+				<Route path='/' element={<HomePage />} />
+				<Route path='/report' element={<ReportPage />} />
+			</Routes>
+		</>
+	);
 }
 
 export default App;
