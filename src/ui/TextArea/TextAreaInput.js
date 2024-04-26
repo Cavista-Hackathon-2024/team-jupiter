@@ -1,17 +1,17 @@
-import TextArea from "./styles";
+import TextAreaContainer from "./styles";
 
-const TextAreaInput = ({ id, value, label, onChange, ...rest }) => {
+const TextAreaInput = ({ name, value, label, onChange, ...rest }) => {
   return (
-    <>
-      <label for={id}>{label}</label>
-      <TextArea
-        name={id}
+    <TextAreaContainer>
+      <label for={name}>{label}</label>
+      <textarea
+        name={name}
         value={value}
-        id={id}
-        onChange={onChange}
+        id={name}
+        onChange={(event) => onChange(event)}
         {...rest}
-      ></TextArea>
-    </>
+      ></textarea>
+    </TextAreaContainer>
   );
 };
 

@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-const TextArea = styled.textarea``;
+const TextAreaContainer = styled.div``;
 
-export default TextArea;
+export default TextAreaContainer;
