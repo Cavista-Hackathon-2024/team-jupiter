@@ -1,1 +1,86 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
+body {
+	font-family: 'DM Sans', sans-serif;
+	background: #f9f7f3;
+}
+
+img {
+	max-width: 100%;
+}
+
+/* Helper Classes */
+._flex {
+	display: flex;
+	align-items: center;
+}
+.fx_center {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+
+.fx_between {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.btn {
+	width: fit-content;
+	padding: 5px 22px;
+	color: #fff;
+	border-radius: 28px;
+	background: #222;
+	@apply select-none transition-all hover:opacity-85;
+}
+
+.btn_primary {
+	width: fit-content;
+	padding: 6px 22px;
+	color: #222;
+	border-radius: 28px;
+	background: #c5ff32;
+	@apply mx-auto mt-4 select-none transition-all hover:opacity-85;
+}
+
+header {
+	color: #222;
+	padding: 12px;
+	background: #c5ff32;
+	/* background: #009000; */
+	@apply px-6;
+}
+
+h1 {
+	font-size: 34px;
+}
+
+.textBox {
+	@apply border rounded-md border-gray-400 bg-white shadow-md;
+}
+
+.textBox h5 {
+	@apply p-3  px-3 border-b border-gray-400 capitalize;
+}
+
+.textBox > div {
+	font-size: 14px;
+	@apply py-4 px-3 text-gray-500;
+}
+
+.xCard {
+	@apply text-sm border rounded-md border-gray-400 bg-white shadow-md text-center p-4;
+}
+
+.xCard img {
+	margin-bottom: 8px;
+}
+.xCard h5 {
+	@apply font-medium  capitalize;
+}
