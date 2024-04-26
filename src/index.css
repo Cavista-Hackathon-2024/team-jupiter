@@ -4,6 +4,11 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
+* {
+	outline: none;
+	text-decoration: none;
+}
+
 body {
 	font-family: 'DM Sans', sans-serif;
 	background: #f9f7f3;
@@ -24,7 +29,6 @@ img {
 	justify-content: center;
 	text-align: center;
 }
-
 .fx_between {
 	display: flex;
 	align-items: center;
@@ -49,12 +53,11 @@ img {
 	@apply mx-auto mt-4 select-none transition-all hover:opacity-85;
 }
 
+/* LAYOUT */
 header {
 	color: #222;
-	padding: 12px;
 	background: #c5ff32;
-	/* background: #009000; */
-	@apply px-6;
+	@apply py-[12px] mb-8;
 }
 
 h1 {
@@ -66,7 +69,7 @@ h1 {
 }
 
 .textBox h5 {
-	@apply p-3  px-3 border-b border-gray-400 capitalize;
+	@apply p-3  px-3 border-b font-medium border-gray-400 capitalize;
 }
 
 .textBox > div {
@@ -83,4 +86,36 @@ h1 {
 }
 .xCard h5 {
 	@apply font-medium  capitalize;
+}
+
+/* FORM */
+form .category {
+	margin-bottom: 14px;
+}
+
+form .category h6 {
+	border-bottom: 1px solid rgb(20, 20, 20);
+	@apply py-3 mb-9 font-semibold capitalize;
+}
+
+.input-boxes {
+	@apply grid md:grid-cols-2 gap-x-5;
+}
+
+.inputBox {
+	@apply border rounded-md border-gray-400 bg-gray-50 shadow-md mb-5;
+}
+
+.inputBox label {
+	display: block;
+	@apply p-3 px-3 border-b font-medium border-gray-400 capitalize;
+}
+
+.inputBox > div {
+	font-size: 14px;
+	@apply p-1 py-2 text-gray-500;
+}
+.inputBox input,
+.inputBox textarea {
+	background: transparent;
 }
