@@ -5,8 +5,10 @@ import TextAreaInput from '../../ui/TextArea/TextAreaInput';
 import Input from '../../ui/Input/Input';
 import { ImagePlaceholder } from '../../assets/images';
 import Layout from '../../ui/Layout';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+	const navigate = useNavigate();
 	const [imageURL, setImageURL] = useState('');
 	const [formData, setFormData] = useState({
 		image: '',
@@ -27,12 +29,12 @@ const HomePage = () => {
 		trigger: '',
 	});
 
+	const reader = new FileReader();
+
 	const handleChange = (event) => {
 		const { name, value } = event.target;
 		setFormData((prev) => ({ ...prev, [name]: value }));
 	};
-
-	const reader = new FileReader();
 
 	const handleFileSelect = (name, value) => {
 		setFormData((prev) => ({ ...prev, [name]: value[0] }));
@@ -47,6 +49,15 @@ const HomePage = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
+		// console.log('formData:', formData, imageURL);
+		console.log('formData:', formData);
+
+		if (!formData.nature) {
+			alert('Nature of symptom is required');
+			return;
+		}
+
+		navigate('/report', { state: formData });
 	};
 
 	return (
@@ -74,6 +85,44 @@ const HomePage = () => {
 
 				<section className='input-section'>
 					<form onSubmit={handleSubmit}>
+						<div className='category'>
+							<h6>symptoms</h6>
+							<div className='input-boxes'>
+								<TextAreaInput
+									name='nature'
+									label='Nature of symptoms'
+									placeholder='Details about itchiness, pain, burning, tingling, etc.'
+									rows='10'
+									value={formData.nature}
+									onChange={(event) => handleChange(event)}
+								/>
+
+								<div>
+									<Input
+										name='appearance'
+										label='Appearance'
+										placeholder='Color changes, swelling, scaling, oozing, or any other visible markers.'
+										value={formData.appearance}
+										onChange={(event) => handleChange(event)}
+									/>
+									<Input
+										name='duration'
+										label='Duration'
+										placeholder='How long the symptoms have been present. '
+										value={formData.duration}
+										onChange={(event) => handleChange(event)}
+									/>
+									<Input
+										name='changes'
+										label='Changes over time'
+										placeholder='Whether symptoms are getting worse, improving, or changing in nature. '
+										value={formData.changes}
+										onChange={(event) => handleChange(event)}
+									/>
+								</div>
+							</div>
+						</div>
+
 						<div className='category'>
 							<h6>Personal Information</h6>
 
@@ -110,44 +159,6 @@ const HomePage = () => {
 									rows={6}
 									onChange={(event) => handleChange(event)}
 								/>
-							</div>
-						</div>
-
-						<div className='category'>
-							<h6>symptoms</h6>
-							<div className='input-boxes'>
-								<TextAreaInput
-									name='nature'
-									label='Nature of symptoms'
-									placeholder='Details about itchiness, pain, burning, tingling, etc.'
-									rows='10'
-									value={formData.nature}
-									onChange={(event) => handleChange(event)}
-								/>
-
-								<div>
-									<Input
-										name='appearance'
-										label='Appearance'
-										placeholder='Color changes, swelling, scaling, oozing, or any other visible markers.'
-										value={formData.appearance}
-										onChange={(event) => handleChange(event)}
-									/>
-									<Input
-										name='duration'
-										label='Duration'
-										placeholder='How long the symptoms have been present. '
-										value={formData.duration}
-										onChange={(event) => handleChange(event)}
-									/>
-									<Input
-										name='changes'
-										label='Changes over time'
-										placeholder='Whether symptoms are getting worse, improving, or changing in nature. '
-										value={formData.changes}
-										onChange={(event) => handleChange(event)}
-									/>
-								</div>
 							</div>
 						</div>
 
@@ -211,7 +222,9 @@ const HomePage = () => {
 							</div>
 						</div>
 
-						<button className='btn_primary !px-20 !py-2 font-medium mb-14'>Submit</button>
+						<button className='btn_primary !px-20 !py-2 font-medium mb-14' type='submit'>
+							Submit
+						</button>
 					</form>
 				</section>
 			</HomeWrapper>
