@@ -4,16 +4,23 @@ import { GoogleGenerativeAI } from '@google/generative-ai';
 import { Link, useLocation } from 'react-router-dom';
 
 const ReportPage = () => {
+	const location = useLocation();
+	const data = location.state;
 	const [loading, setLoading] = useState(true);
+
 	const [response1, setResponse1] = useState();
 	const [response2, setResponse2] = useState();
 	const [response3, setResponse3] = useState();
 	const [response4, setResponse4] = useState();
-	const location = useLocation();
-	const data = location.state;
 
 	useEffect(() => {
 		window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+
+		// Error handling
+		if (!data?.nature) {
+			alert('Please provide details about Symptoms');
+			window.location.href = '/';
+		}
 
 		const generateResultAI = (data) => {
 			// Access your API key (see "Set up your API key" above)
